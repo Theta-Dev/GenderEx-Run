@@ -21,7 +21,7 @@ jobs:
           timezoneLinux: "Europe/Berlin"
 
       - name: Install GenderEx
-        run: pip install -i https://test.pypi.org/simple/ Spotify-Gender-Ex==3.0.0
+        run: pip install --extra-index-url https://test.pypi.org/simple/ Spotify-Gender-Ex==3.0.0
       
       - uses: actions/checkout@v2
       
