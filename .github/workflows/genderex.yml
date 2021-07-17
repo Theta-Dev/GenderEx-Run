@@ -21,7 +21,7 @@ jobs:
           timezoneLinux: "Europe/Berlin"
 
       - name: Install GenderEx
-        run: pip install --extra-index-url https://test.pypi.org/simple/ Spotify-Gender-Ex==3.0.0
+        run: pip install https://github.com/Theta-Dev/Spotify-Gender-Ex/archive/refs/heads/master.zip
       
       - uses: actions/checkout@v2
       
@@ -32,7 +32,7 @@ jobs:
         if: ${{ env.apk_file }} != ''
         run: |
           curl https://mega.nz/linux/MEGAsync/xUbuntu_20.04/amd64/megacmd_1.4.0-5.1_amd64.deb --output megacmd.deb
-          sudo apt install ./megacmd.deb -y
+          sudo apt-get install ./megacmd.deb -y
           mega-login ${{ secrets.MEGA_USER }} ${{ secrets.MEGA_PASS }}
           mega-put ${{ env.apk_file }} /Spotify-GenderEx/
       
@@ -50,4 +50,5 @@ jobs:
         with:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
-          message: 'Spotify ${{ env.spotify_version }} wurde erfolgreich degenderifiziert.\n\n${{ env.apk_file }}'
+          message: ${{ env.genderex_msg }}
+          format: markdown
