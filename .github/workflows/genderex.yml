@@ -1,4 +1,4 @@
-name: GenderEx Live
+name: GenderEx Run
 on: workflow_dispatch
 jobs:
   genderex:
@@ -32,7 +32,7 @@ jobs:
         if: ${{ env.apk_file }} != ''
         run: |
           curl https://mega.nz/linux/MEGAsync/xUbuntu_20.04/amd64/megacmd_1.4.0-5.1_amd64.deb --output megacmd.deb
-          sudo apt install megacmd.deb -y
+          sudo apt install ./megacmd.deb -y
           mega-login ${{ secrets.MEGA_USER }} ${{ secrets.MEGA_PASS }}
           mega-put ${{ env.apk_file }} /Spotify-GenderEx/
       
