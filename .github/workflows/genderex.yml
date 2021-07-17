@@ -30,12 +30,11 @@ jobs:
       
       - name: Upload to MEGA.nz
         if: ${{ env.apk_file }} != ''
-        uses: Difegue/action-megacmd@master
-        with:
-          args: put ${{ env.apk_file }} /Spotify-GenderEx/
-        env:
-          USERNAME: ${{ secrets.MEGA_USER }}
-          PASSWORD: ${{ secrets.MEGA_PASS }}
+        run: |
+          curl https://mega.nz/linux/MEGAsync/xUbuntu_20.04/amd64/megacmd_1.4.0-5.1_amd64.deb --output megacmd.deb
+          sudo apt install megacmd.deb -y
+          mega-login ${{ secrets.MEGA_USER }} ${{ secrets.MEGA_PASS }}
+          mega-put ${{ env.apk_file }} /Spotify-GenderEx/
       
       - name: Save latest Spotify version
         if: ${{ env.apk_file }} != ''
