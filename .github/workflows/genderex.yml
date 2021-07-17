@@ -44,11 +44,18 @@ jobs:
           default_author: github_actions
           message: 'Updated spotify version to ${{ env.spotify_version }}'
       
+      - name: Create message
+        run: |
+          echo 'Spotify *${{ env.spotify_version }}* wurde erfolgreich degenderifiziert!' > msg.txt
+          echo 'Spotify-Gender-Ex: `${{ env.genderex_version }}`' >> msg.txt
+          echo 'Ersetzungstabellen: `${{ env.rt_versions }}`' >> msg.txt
+          echo 'Neue Ersetzungsregeln: `${{ env.repl_string }}`' >> msg.txt
+      
       - name: Notify via Telegram
         if: ${{ env.apk_file }} != ''
         uses: appleboy/telegram-action@master
         with:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
-          message: ${{ env.genderex_msg }}
+          message_file: msg.txt
           format: markdown
