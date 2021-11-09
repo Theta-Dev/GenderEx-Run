@@ -1,4 +1,4 @@
-name: GenderEx Run
+#name: GenderEx Run
 on:
   schedule:
     - cron: '0 8 * * *'
@@ -26,7 +26,7 @@ jobs:
           timezoneLinux: "Europe/Berlin"
 
       - name: Install GenderEx
-        run: pip install spotify-gender-ex
+        run: pip install git+https://github.com/Theta-Dev/Spotify-Gender-Ex.git@apkcombo
       
       - uses: actions/checkout@v2
       
