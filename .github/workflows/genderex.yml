@@ -20,13 +20,16 @@ jobs:
         with:
           python-version: 3.9
       
+      - name: Set up chromedriver
+        uses: nanasess/setup-chromedriver@master
+      
       - name: Set timezone
         uses: szenius/set-timezone@v1.0
         with:
           timezoneLinux: "Europe/Berlin"
 
       - name: Install GenderEx
-        run: pip install git+https://github.com/Theta-Dev/Spotify-Gender-Ex.git@apkcombo
+        run: pip install "spotify-gender-ex[selenium] @ git+https://github.com/Theta-Dev/Spotify-Gender-Ex.git@apkcombo"
       
       - uses: actions/checkout@v2
       
