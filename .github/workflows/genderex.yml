@@ -1,10 +1,10 @@
 name: GenderEx Run
 on:
-  schedule:
-    - cron: '0 8 * * *'
+  #schedule:
+  #  - cron: '0 8 * * *'
   workflow_dispatch:
-  repository_dispatch:
-    types: [run_genderex]
+  #repository_dispatch:
+  #  types: [run_genderex]
 jobs:
   genderex:
     runs-on: ubuntu-latest
