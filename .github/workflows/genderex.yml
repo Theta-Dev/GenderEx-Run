@@ -20,12 +20,6 @@ jobs:
         with:
           python-version: 3.9
       
-      - name: Set up chrome
-        uses: browser-actions/setup-chrome@latest
-
-      - name: Set up chromedriver
-        uses: nanasess/setup-chromedriver@master
-      
       - name: Set timezone
         uses: szenius/set-timezone@v1.0
         with:
